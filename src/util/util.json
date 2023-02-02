@@ -1,0 +1,23 @@
+{
+  "_baseUrl": "http://localhost:4000",
+  "__baseUrl": "https://feclone-server-production.up.railway.app",
+  "baseUrl": "https://feclone-server.onrender.com",
+  "configuration": {
+    "logoUrl": "/images/home_icon.png",
+    "companyName": "Search Homes",
+    "phoneNum": "+2519789216",
+    "address": "Addis Ababa, Kotebe",
+    "companyEmail": "searchHomes@gmail.com",
+    "bigHeadLine": "This is going to be a big Headline",
+    "subHeadLine": "This is going to be a small subheadline",
+    "ourMission": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima voluptas quidem repellat impedit adipisci soluta in dolores vel nemo amet nostrum vero corrupti quia sapiente, aspernatur saepe suscipit tenetur perferendis?",
+    "ourVision": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima voluptas quidem repellat impedit adipisci soluta in dolores vel nemo amet nostrum vero corrupti quia sapiente, aspernatur saepe suscipit tenetur perferendis?",
+    "aboutUs": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima voluptas quidem repellat impedit adipisci soluta in dolores vel nemo amet nostrum vero corrupti quia sapiente, aspernatur saepe suscipit tenetur perferendis?",
+    "socialLinks": {
+      "twitter": "https://twitter.com/CompanyTwitter",
+      "facebook": "https://facebook.com/companyFacebook",
+      "linkedIn": "https://www.linkedin.com/companyLinkedIn",
+      "telegram": "https://t.me/"
+    }
+  }
+}

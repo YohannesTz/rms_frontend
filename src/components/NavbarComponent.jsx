@@ -29,7 +29,7 @@ const NavbarComponent = () => {
       <Navbar fluid={false}>
         <Navbar.Brand href="/" className="ml-2">
           <img
-            src="/images/gear_icon_100.png"
+            src={util.configuration.logoUrl}
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
@@ -42,8 +42,7 @@ const NavbarComponent = () => {
         </div>
         <Navbar.Collapse>
           <Navbar.Link href="/">Home</Navbar.Link>
-          <Navbar.Link href="/jobs">Jobs</Navbar.Link>
-          <Navbar.Link href="/talents">Talents</Navbar.Link>
+          <Navbar.Link href="/jobs">Rooms</Navbar.Link>
           <Navbar.Link href="/about-us">AboutUs</Navbar.Link>
           <Navbar.Link href="/contact">Contact</Navbar.Link>
           {authData.authenticated ? (
@@ -60,10 +59,11 @@ const NavbarComponent = () => {
                 SignIn
               </Navbar.Link>
             </>
-          ): (
-            <Navbar.Link href="/get-started" onClick={handleSignIn}>Get started</Navbar.Link>
+          ) : (
+            <Navbar.Link href="/get-started" onClick={handleSignIn}>
+              Get started
+            </Navbar.Link>
           )}
-
         </Navbar.Collapse>
       </Navbar>
     </div>
