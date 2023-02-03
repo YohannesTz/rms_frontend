@@ -8,6 +8,10 @@ import NotFoundErrorPage from "./pages/NotFoundErrorPage";
 import RoomsPage from "./pages/RoomsPage";
 import MapsPage from "./pages/MapsPage";
 import ContactPage from "./pages/ContactPage";
+import GetStarted from "./pages/GetStartedPage";
+import JoinClient from "./pages/JoinClient";
+import JoinLandLord from "./pages/JoinLandLord";
+import SignInPage from "./pages/SignInPage";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +33,22 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/get-started",
+        element: <GetStarted />,
+      },
+      {
+        path: "/join-client",
+        element: <JoinClient />,
+      },
+      {
+        path: "/join-landlord",
+        element: <JoinLandLord />,
+      },
+      {
+        path: "/signIn",
+        element: <SignInPage />,
       },
     ],
   },

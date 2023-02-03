@@ -5,7 +5,7 @@ import util from "../util/util.json";
 
 const FooterComponent = () => {
   return (
-    <div className="text-right bottom-0">
+    <div className="text-left text-white m-4">
       <Footer bgDark={true}  container={true}>
         <div className="w-full">
           <div>

@@ -1,6 +1,11 @@
 import React from "react";
 import { Sidebar } from "flowbite-react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  LoadScript,
+  Marker,
+  useJsApiLoader,
+} from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",
@@ -12,10 +17,12 @@ const center = {
   lng: 38.763611,
 };
 
+const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
+
 const MapsPage = () => {
   return (
-    <div className="flex flex-row gap-2 rounded-md">
-      <div className="w-1/5 shadow-lg rounded-lg border flex-1">
+    <div className="flex flex-row gap-2 my-10 h-max rounded-md">
+      <div className="w-1/5 rounded-lg border flex-1 md:w-0">
         <Sidebar aria-label="Default sidebar example">
           <Sidebar.Items>
             <Sidebar.ItemGroup>
@@ -39,14 +46,14 @@ const MapsPage = () => {
         </Sidebar>
       </div>
 
-      <div className="w-4/5">
-        <LoadScript googleMapsApiKey="">
+      <div className="w-4/5 md:w-5/5 block">
+        <LoadScript googleMapsApiKey={apiKey}>
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
-            zoom={10}
+            zoom={12}
           >
-            <Marker position={center}/>
+            <Marker position={center} />
           </GoogleMap>
         </LoadScript>
       </div>

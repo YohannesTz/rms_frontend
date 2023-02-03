@@ -15,12 +15,12 @@ const RoomsPage = () => {
           <p className="text-3xl">Search Rooms</p>
         </div>
       </div>
-      <div className="flex flex-row justify-center lg:px-72 md:px-52 sm:px-0 px-5">
+      <div className="flex flex-row justify-center lg:px-72 md:px-52 sm:px-0 px-5 my-4">
         <div className="w-4/5">
           <TextInput
             type="text"
             className="rounded-r-full"
-            placeholder="Type job name here"
+            placeholder="Type place name here"
             required={true}
           />
         </div>
@@ -35,7 +35,10 @@ const RoomsPage = () => {
       </div>
 
       <div>
-        <div className="grid lg:grid-cols-3  md:gird-cols-2 sm:grid-cols-1 place-items-center">
+        <div className="grid lg:grid-cols-3 md:gird-cols-2 sm:grid-cols-1 place-items-center px-20">
+          <RoomItemComponent />
+          <RoomItemComponent />
+          <RoomItemComponent />
           <RoomItemComponent />
           <RoomItemComponent />
           <RoomItemComponent />

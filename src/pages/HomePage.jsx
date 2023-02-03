@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import workLottieAnimaiton from "../assets/work_animation.json";
 import manCodingLottieAnimation from "../assets/man_working_white.json";
 import util from "../util/util.json";
+import CarouselItemComponent from "../components/CarouselItemComponent";
 
 const style = {
   height: 400,
@@ -62,30 +63,25 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="h-60 sm:h-64 xl:h-80 2xl:h-96">
+      {/* <div className="h-60 sm:h-64 xl:h-80 2xl:h-96">
         <Carousel>
-          <img
-            src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
-            alt="..."
+          <CarouselItemComponent
+            imageUrl={"https://picsum.photos/200"}
+            title="Easy"
+            content="By default, the dev server (dev command) runs in development mode and the build command runs in production mode. This means when running vite build, it will load the env variables from .env.production if there is one:"
           />
-          <img
-            src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
-            alt="..."
+          <CarouselItemComponent
+            imageUrl={"https://picsum.photos/200"}
+            title="Easy"
+            content="By default, the dev server (dev command) runs in development mode and the build command runs in production mode. This means when running vite build, it will load the env variables from .env.production if there is one:"
           />
-          <img
-            src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
-            alt="..."
-          />
-          <img
-            src="https://flowbite.com/docs/images/carousel/carousel-4.svg"
-            alt="..."
-          />
-          <img
-            src="https://flowbite.com/docs/images/carousel/carousel-5.svg"
-            alt="..."
+          <CarouselItemComponent
+            imageUrl={"https://picsum.photos/200"}
+            title="Easy"
+            content="By default, the dev server (dev command) runs in development mode and the build command runs in production mode. This means when running vite build, it will load the env variables from .env.production if there is one:"
           />
         </Carousel>
-      </div>
+      </div> */}
     </div>
   );
 };

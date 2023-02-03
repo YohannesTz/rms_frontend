@@ -17,8 +17,8 @@ const NavbarComponent = () => {
   const handleSignIn = () => {
     if (authData.role == "client") {
       navigate("/client-view");
-    } else if (authData.role == "talent") {
-      navigate("/talent-view");
+    } else if (authData.role == "landlord") {
+      navigate("/landlord-view");
     } else {
       navigate("/get-started");
     }
