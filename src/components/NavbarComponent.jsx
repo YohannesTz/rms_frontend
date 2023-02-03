@@ -42,8 +42,8 @@ const NavbarComponent = () => {
         </div>
         <Navbar.Collapse>
           <Navbar.Link href="/">Home</Navbar.Link>
-          <Navbar.Link href="/jobs">Rooms</Navbar.Link>
-          <Navbar.Link href="/about-us">AboutUs</Navbar.Link>
+          <Navbar.Link href="/rooms">Rooms</Navbar.Link>
+          <Navbar.Link href="/map">Map</Navbar.Link>
           <Navbar.Link href="/contact">Contact</Navbar.Link>
           {authData.authenticated ? (
             <>
