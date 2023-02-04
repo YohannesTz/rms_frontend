@@ -67,7 +67,7 @@ const SignInPage = () => {
                 <h3 className="mb-5 text-lg font-normal text-gray-600 ">
                   {typeof result.error == "undefined"
                     ? " Unknwon error! "
-                    : result.error.msg}
+                    : result.error.message}
                 </h3>
               </div>
             )}

@@ -3,15 +3,18 @@ import {
   Label,
   TextInput,
   Button,
-  Select,
   Textarea,
   Spinner,
   Modal,
 } from "flowbite-react";
 import { VisiblityButton } from "../components/VisiblityButton";
+import { BsFillCheckCircleFill, BsFillXOctagonFill } from "react-icons/bs";
 import PasswordStrengthBar from "react-password-strength-bar";
+import axios from "axios";
+import util from "../util/util.json";
 
 const JoinClient = () => {
+  const baseUrl = util.baseUrl;
   const initialValues = {
     email: "",
     password: "",
@@ -19,7 +22,7 @@ const JoinClient = () => {
     lastName: "",
     phonenumber: "",
     bio: "",
-    role: "client"
+    role: "client",
   };
 
   const [formValues, setFormValues] = useState(initialValues);
@@ -41,11 +44,13 @@ const JoinClient = () => {
       formValues.password.length + 1 >= 8 &&
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email) &&
       /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
-        formValues.phoneNo
+        formValues.phonenumber
       )
     ) {
+      console.log("check is successfull");
       setIsSubmitDisabled(false);
     } else {
+      console.log("check is not successfull");
       setIsSubmitDisabled(true);
     }
 
@@ -54,23 +59,23 @@ const JoinClient = () => {
       formValues.email === ""
     ) {
       setEmailError("Please enter a valid email");
-      console.log("email valid");
+      console.log("email is not valid");
     } else {
       setEmailError("");
-      console.log("email not valid");
+      console.log("email valid");
     }
 
     if (
-      formValues.phoneNo === "" ||
+      formValues.phonenumber === "" ||
       !/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
-        formValues.phoneNo
+        formValues.phonenumber
       )
     ) {
       setPhoneError("Please enter a valid phone number");
-      console.log("phone number valid");
+      console.log("phone number not valid");
     } else {
       setPhoneError("");
-      console.log("phone num not valid");
+      console.log("phone num valid");
     }
     setFormValues({
       ...formValues,
@@ -79,12 +84,30 @@ const JoinClient = () => {
     console.log(formValues);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues);
+    setIsLoading(true);
+
+    axios
+      .post(baseUrl + "/api/users/signUp", formValues)
+      .then((response) => {
+        console.log(response);
+        setResult(response.data);
+        setIsLoading(false);
+        setShowDialog(true);
+        console.log(result.success);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  };
 
   const onClose = () => {
     setShowDialog(false);
     if (result.success) {
-      navigate("/client-signin");
+      navigate("/signIn");
     }
   };
 
@@ -95,6 +118,35 @@ const JoinClient = () => {
 
   return (
     <div>
+      <Modal show={showDialog} size="md" popup={true} onClose={onClose}>
+        <Modal.Header />
+        <Modal.Body>
+          <div className="text-center">
+            {result.success ? (
+              <div>
+                <BsFillCheckCircleFill className="mx-auto mb-4 h-14 w-14 text-gray-600 " />
+                <h3 className="mb-5 text-lg font-normal text-gray-600 ">
+                  Success!
+                </h3>
+              </div>
+            ) : (
+              <div>
+                <BsFillXOctagonFill className="mx-auto mb-4 h-14 w-14 text-gray-600 " />
+                <h3 className="mb-5 text-lg font-normal text-gray-600 ">
+                  {typeof result.error == "undefined"
+                    ? " Unknwon error! "
+                    : result.error.message}
+                </h3>
+              </div>
+            )}
+            <div className="flex justify-center gap-4">
+              <Button color="gray" pill size="xs" onClick={onClose}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
       <div className="flex flex-row flex-wrap my-6 justify-center">
         <div className="text-gray-800 text-left whitespace-break-normal justify-center ">
           <p className="text-3xl">Hi Please fill in...</p>
@@ -172,10 +224,10 @@ const JoinClient = () => {
 
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="phoneNo" value="Your PhoneNumber" />
+                <Label htmlFor="phonenumber" value="Your PhoneNumber" />
               </div>
               <TextInput
-                id="phoneNo"
+                id="phonenumber"
                 type="phoneNo"
                 placeholder="Please input your phone number here"
                 required={true}
@@ -187,10 +239,10 @@ const JoinClient = () => {
 
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="description" value="Your Bio" />
+                <Label htmlFor="bio" value="Your Bio" />
               </div>
               <Textarea
-                id="description"
+                id="bio"
                 type="text"
                 placeholder="Please input your Organization description"
                 required={true}

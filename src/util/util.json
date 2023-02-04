@@ -1,7 +1,6 @@
 {
   "_baseUrl": "http://localhost:4000",
-  "__baseUrl": "https://feclone-server-production.up.railway.app",
-  "baseUrl": "https://feclone-server.onrender.com",
+  "baseUrl": "https://rms-backend.onrender.com",
   "configuration": {
     "logoUrl": "/images/home_icon.png",
     "companyName": "Search Homes",

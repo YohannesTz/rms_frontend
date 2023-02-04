@@ -4,8 +4,10 @@ import {
   GoogleMap,
   LoadScript,
   Marker,
+  MarkerF,
   useJsApiLoader,
 } from "@react-google-maps/api";
+import secrets from "../../secret.json";
 
 const containerStyle = {
   width: "100%",
@@ -17,7 +19,18 @@ const center = {
   lng: 38.763611,
 };
 
-const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
+const myHome = {
+  lat: 9.042247,
+  lng: 38.84433,
+};
+
+const hm = {
+  lat: 9.242247,
+  lng: 38.44433,
+};
+
+const apiKey = import.meta.env.GOOGLE_MAP_API_KEY
+console.log(apiKey);
 
 const MapsPage = () => {
   return (
@@ -53,7 +66,10 @@ const MapsPage = () => {
             center={center}
             zoom={12}
           >
-            <Marker position={center} />
+            <MarkerF
+              key={`lat-${myHome.lat}-lng-${myHome.lng}`}
+              position={myHome}
+            />
           </GoogleMap>
         </LoadScript>
       </div>

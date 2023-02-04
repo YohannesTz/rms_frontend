@@ -12,6 +12,7 @@ import GetStarted from "./pages/GetStartedPage";
 import JoinClient from "./pages/JoinClient";
 import JoinLandLord from "./pages/JoinLandLord";
 import SignInPage from "./pages/SignInPage";
+import LordView from "./pages/LordView";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         path: "/signIn",
         element: <SignInPage />,
       },
+      {
+        path: "/lord-view",
+        element: <LordView />
+      }
     ],
   },
   {
