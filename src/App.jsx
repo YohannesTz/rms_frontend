@@ -6,9 +6,9 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <Flowbite>
-      <div className="flex flex-col mx-auto">
+      <div className="flex flex-col h-screen">
         <NavbarComponent />
-        <div className="flex-grow px-4 lg:m-2 md:px-8">
+        <div className="px-4 lg:m-2 md:px-8 flex-1">
           <Outlet />
         </div>
         <FooterComponent />

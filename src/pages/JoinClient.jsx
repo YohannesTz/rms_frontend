@@ -12,8 +12,10 @@ import { BsFillCheckCircleFill, BsFillXOctagonFill } from "react-icons/bs";
 import PasswordStrengthBar from "react-password-strength-bar";
 import axios from "axios";
 import util from "../util/util.json";
+import { useNavigate } from "react-router-dom";
 
 const JoinClient = () => {
+  let navigate = useNavigate();
   const baseUrl = util.baseUrl;
   const initialValues = {
     email: "",
@@ -228,7 +230,7 @@ const JoinClient = () => {
               </div>
               <TextInput
                 id="phonenumber"
-                type="phoneNo"
+                type="phonenumber"
                 placeholder="Please input your phone number here"
                 required={true}
                 value={formValues.phonenumber}

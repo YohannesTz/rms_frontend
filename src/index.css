@@ -5,3 +5,7 @@
 input[type="radio"]:checked+span {
     display: block;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}

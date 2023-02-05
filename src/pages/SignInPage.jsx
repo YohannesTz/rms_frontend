@@ -5,9 +5,14 @@ import { BsFillCheckCircleFill, BsFillXOctagonFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { VisiblityButton } from "../components/VisiblityButton";
 import util from "../util/util.json";
+import axios from "axios";
 
 const SignInPage = () => {
+  let navigate = useNavigate();
   const baseUrl = util.baseUrl;
+  const authData = useAuthStore((state) => state.authData);
+  const setAuthData = useAuthStore((state) => state.setAuthData);
+
   const initialValues = {
     email: "",
     password: "",
@@ -30,18 +35,53 @@ const SignInPage = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    console.log(formValues);
+
+    axios
+      .post(baseUrl + "/api/users/login", formValues)
+      .then((response) => {
+        console.log(response);
+        setResult(response.data);
+        setIsLoading(false);
+        setShowDialog(true);
+        console.log(result.success);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
   };
 
   const onClose = () => {
     setShowDialog(false);
+
+    if (result.success) {
+      let authData = {
+        authenticated: true,
+        ...result.data,
+      };
+
+      setAuthData(authData);
+
+      if (authData.role == "client") {
+        navigate("/client-view");
+      } else if (authData.role == "lord") {
+        navigate("/lord-view");
+      }
+    }
   };
 
-/*   useEffect(() => {
-    if (Object.keys(authData).length > 0 && authData.role === "talent") {
-      console.log("redirecting...");
-      navigate("/talent-view");
+  useEffect(() => {
+    if (Object.keys(authData).length > 0 && authData.role === "client") {
+      console.log("redirecting client...");
+      navigate("/client-view");
+    } else if (Object.keys(authData).length > 0 && authData.role === "lord") {
+      console.log("redirecting lord...");
+      navigate("/lord-view");
     }
-  }); */
+  });
 
   return (
     <div>

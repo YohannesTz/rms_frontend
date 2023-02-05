@@ -13,6 +13,7 @@ import JoinClient from "./pages/JoinClient";
 import JoinLandLord from "./pages/JoinLandLord";
 import SignInPage from "./pages/SignInPage";
 import LordView from "./pages/LordView";
+import ClientViewPage from "./pages/ClientViewPage";
 
 const router = createBrowserRouter([
   {
@@ -53,8 +54,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/lord-view",
-        element: <LordView />
-      }
+        element: <LordView />,
+      },
+      {
+        path: "/client-view",
+        element: <ClientViewPage />,
+      },
     ],
   },
   {
