@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Sidebar } from "flowbite-react";
 import {
   GoogleMap,
@@ -8,6 +8,9 @@ import {
   useJsApiLoader,
 } from "@react-google-maps/api";
 import secrets from "../../secret.json";
+import { OverlayView } from "@react-google-maps/api";
+import axios from "axios";
+import util from "../util/util.json";
 
 const containerStyle = {
   width: "100%",
@@ -29,47 +32,71 @@ const hm = {
   lng: 38.44433,
 };
 
-const apiKey = import.meta.env.GOOGLE_MAP_API_KEY
-console.log(apiKey);
+const apiKey = secrets.GOOGLE_MAPS_API_KEY;
 
 const MapsPage = () => {
+  let baseUrl = util.baseUrl;
+  const [rooms, setRooms] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState({});
+  const skip = 0,
+    take = 5;
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      axios
+        .get(baseUrl + `/api/rooms?skip=${skip}&take=${take}`)
+        .then((response) => {
+          setRooms([...rooms, ...response.data.data.rooms]);
+        });
+    };
+    fetchRooms().catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    // console.log(selectedRoom);
+  }, [selectedRoom]);
+
   return (
-    <div className="flex flex-row gap-2 my-10 h-max rounded-md">
-      <div className="w-1/5 rounded-lg border flex-1 md:w-0">
-        <Sidebar aria-label="Default sidebar example">
-          <Sidebar.Items>
-            <Sidebar.ItemGroup>
-              <Sidebar.Item href="#">Dashboard</Sidebar.Item>
-              <Sidebar.Item href="#" label="Pro" labelColor="alternative">
-                Kanban
-              </Sidebar.Item>
-              <Sidebar.Item href="#" label="3">
-                Inbox
-              </Sidebar.Item>
-              <Sidebar.Item href="#">Users</Sidebar.Item>
-              <Sidebar.Item href="#">Products</Sidebar.Item>
-              <Sidebar.Item href="#">Sign In</Sidebar.Item>
-              <Sidebar.Item href="#">Sign Up</Sidebar.Item>
-              <Sidebar.Item href="#">Users</Sidebar.Item>
-              <Sidebar.Item href="#">Products</Sidebar.Item>
-              <Sidebar.Item href="#">Sign In</Sidebar.Item>
-              <Sidebar.Item href="#">Sign Up</Sidebar.Item>
-            </Sidebar.ItemGroup>
-          </Sidebar.Items>
+    <div className="flex flex-row gap-2 my-2 h-max rounded-md">
+      <div className="w-2/6 rounded-lg border flex-1 md:w-0 h-screen">
+        <Sidebar>
+
+          <div className="flex flex-col gap-3 px-2">
+            <p>Room Details</p>
+            <p>Id: {selectedRoom.id}</p>
+            <p className="break-word">Summary: {selectedRoom.summary}</p>
+            <p className="break-word">
+              Total Bedrooms: {selectedRoom.total_bedrooms}
+            </p>
+            <p className="break-word">
+              Total Bathrooms: {selectedRoom.total_bathrooms}
+            </p>
+            <p className="break-word">Summary: {selectedRoom.summary}</p>
+          </div>
         </Sidebar>
       </div>
 
-      <div className="w-4/5 md:w-5/5 block">
+      <div className="w-4/6 md:w-5/5 block">
         <LoadScript googleMapsApiKey={apiKey}>
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
             zoom={12}
           >
-            <MarkerF
-              key={`lat-${myHome.lat}-lng-${myHome.lng}`}
-              position={myHome}
-            />
+            {rooms.map((roomItem) => {
+              console.log(roomItem);
+              return (
+                <MarkerF
+                  position={{
+                    lat: +roomItem.latitude,
+                    lng: +roomItem.longtude,
+                  }}
+                  onClick={() => {
+                    setSelectedRoom(roomItem);
+                  }}
+                />
+              );
+            })}
           </GoogleMap>
         </LoadScript>
       </div>

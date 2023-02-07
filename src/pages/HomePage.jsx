@@ -1,27 +1,27 @@
 import React from "react";
 import { Button, Carousel } from "flowbite-react";
 import Lottie from "lottie-react";
-import workLottieAnimaiton from "../assets/work_animation.json";
-import manCodingLottieAnimation from "../assets/man_working_white.json";
+import workLottieAnimaiton from "../assets/man_using_phone.json";
+import manCodingLottieAnimation from "../assets/enjoy-beach-vacation.json";
 import util from "../util/util.json";
 import CarouselItemComponent from "../components/CarouselItemComponent";
 
 const style = {
   height: 400,
-  width: 400,
+  width: 350,
 };
 
 const style_two = {
-  height: 300,
-  width: 300,
+  height: 400,
+  width: 400,
 };
 
 const HomePage = () => {
   return (
-    <div>
-      <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-2">
+    <div className="justify-center md:px-10 lg:px-18">
+      <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-2 place-items-center">
         <div className="text-gray-800 text-left whitespace-break-normal ">
-          <p className="text-5xl sm:text-4xl py-5">
+          <p className="text-4xl sm:text-3xl py-5">
             {util.configuration.bigHeadLine}
           </p>
 
@@ -35,12 +35,69 @@ const HomePage = () => {
           </div>
         </div>
         <div>
-          <Lottie animationData={workLottieAnimaiton} loop={true} />
+          <Lottie
+            animationData={workLottieAnimaiton}
+            style={style}
+            loop={true}
+          />
         </div>
       </div>
 
-      <div className="py-10 z-0">
-        <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-x-10 py-5">
+      <div>
+        <div class="container mx-auto py-20 lg:px-12 sm:px-5 text-gray-800">
+          <p className="text-4xl sm:text-3xl text-center text-gray-800 py-5">
+            Why Us?
+          </p>
+          <div class="grid lg:grid-cols-3 gap-6">
+            <div class="p-3 bg-white shadow-md hover:shadow-lg rounded-2xl px-5 py-6">
+              <span class="font-bold text-xl">Easy</span>
+
+              <p class="mt-2 text-justify">
+                Our website offers a simple, user-friendly platform that allows
+                you to quickly and easily book rooms from the comfort of your
+                own home. With our intuitive search engine, you can find the
+                perfect room in just a few clicks. Plus, our secure payment
+                system ensures that your personal information is kept safe and
+                secure. So why wait? Book your next room today with our website
+                and experience the ease of online booking!
+              </p>
+            </div>
+
+            <div class="p-3 bg-white shadow-md hover:shadow-lg rounded-2xl px-5 py-6">
+              <span class="font-bold text-xl">Affordable</span>
+
+              <p class="mt-2 text-justify">
+                Our website offers a convenient and cost-effective way to book
+                rooms online. With our easy-to-use platform, you can quickly
+                search for the best deals on hotels, motels, and other
+                accommodations. We compare prices from hundreds of providers so
+                you can find the lowest rates available. Plus, we offer
+                exclusive discounts and special offers that can help you save
+                even more money. So why wait? Book your next room today and
+                start saving!
+              </p>
+            </div>
+
+            <div class="p-3 bg-white shadow-md hover:shadow-lg rounded-2xl px-5 py-6">
+              <span class="font-bold text-xl">Reliable</span>
+
+              <p class="mt-2 text-justify">
+                Our website offers a secure and convenient way to book rooms
+                online. We provide an easy-to-use platform that allows you to
+                search for the best deals on hotels, motels, and other
+                accommodations. Our website is regularly updated with the latest
+                prices and availability, so you can be sure that you are getting
+                the best deal. We also offer 24/7 customer service support in
+                case you have any questions or concerns. With our website,
+                booking rooms online is fast, secure, and hassle-free!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="py-10">
+        <div className="grid md:grid-cols-2 sm:grid-cols-1 py-5 gap-2 place-items-center">
           <div className="text-gray-800 text-left whitespace-break-normal ">
             <p className="text-2xl">Our Mission</p>
             <p>{util.configuration.ourMission}</p>
@@ -48,7 +105,7 @@ const HomePage = () => {
           <div></div>
         </div>
 
-        <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-x-10 py-5">
+        <div className="grid md:grid-cols-2 sm:grid-cols-1 py-5 place-items-center">
           <div>
             <Lottie
               animationData={manCodingLottieAnimation}

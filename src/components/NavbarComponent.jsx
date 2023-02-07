@@ -27,7 +27,7 @@ const NavbarComponent = () => {
   return (
     <div className="drop-shadow-md sticky top-0 z-50">
       <Navbar fluid={false}>
-        <Navbar.Brand href="/" className="ml-2">
+        <Navbar.Brand href="/" className="ml-2 text-gray-700">
           <img
             src={util.configuration.logoUrl}
             className="mr-3 h-6 sm:h-9"
