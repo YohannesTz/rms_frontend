@@ -12,6 +12,7 @@ import {
   Spinner,
   Select,
   Checkbox,
+  Tabs,
 } from "flowbite-react";
 import { BsFillCheckCircleFill, BsFillXOctagonFill } from "react-icons/bs";
 import axios from "axios";
@@ -55,6 +56,7 @@ const ClientViewPage = () => {
   const [result, setResult] = useState({});
   const [showResultDialog, setShowResultDialog] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+  const [tabMode, setTabMode] = useState("listings");
 
   useEffect(() => {
     setIsLoading(true);
@@ -388,48 +390,55 @@ const ClientViewPage = () => {
         </div>
       </div>
 
-      <div className="flex flex-row h-screen justify-center">
-        {isLoading && (
-          <div className="flex flex-row my-10 justify-center">
-            <SpinnerCircular
-              size={58}
-              thickness={100}
-              speed={100}
-              color="rgba(58, 0, 162, 1)"
-              secondaryColor="rgba(0, 0, 0, 0.44)"
-            />
-          </div>
-        )}
-        {!isLoading && rooms.length == 0 ? (
-          <div className="m-auto">
-            <Lottie
-              animationData={notFoundAnimation}
-              style={style}
-              loop={true}
-            />
-            <p className="text-xl text-gray-800 text-center">
-              Oops! seems like you don't have any rooms listed
-            </p>
-            <div className="flex flex-row my-6 justify-center">
-              <div className="py-0">
-                <Button size="xs" pill href="/">
-                  Return Home
-                </Button>
-              </div>
+       <div className="flex flex-row md:px-24">
+        <Tabs.Group aria-label="Pills" style="underline">
+          <Tabs.Item active={true} title="Listings">
+            <div className="flex flex-row h-screen justify-center">
+              {isLoading && (
+                <div className="flex flex-row my-10 justify-center">
+                  <SpinnerCircular
+                    size={58}
+                    thickness={100}
+                    speed={100}
+                    color="rgba(58, 0, 162, 1)"
+                    secondaryColor="rgba(0, 0, 0, 0.44)"
+                  />
+                </div>
+              )}
+              {!isLoading && rooms.length == 0 ? (
+                <div className="m-auto">
+                  <Lottie
+                    animationData={notFoundAnimation}
+                    style={style}
+                    loop={true}
+                  />
+                  <p className="text-xl text-gray-800 text-center">
+                    Oops! seems like you don't have any rooms listed
+                  </p>
+                  <div className="flex flex-row my-6 justify-center">
+                    <div className="py-0">
+                      <Button size="xs" pill href="/">
+                        Return Home
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-2 overflow-y-scroll ">
+                  {rooms.map((roomItem) => {
+                    return (
+                      <RoomItemComponent
+                        room={roomItem}
+                        key={roomItem.id.toString()}
+                      />
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          </div>
-        ) : (
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-2 overflow-y-scroll hide-scrollbar">
-            {rooms.map((roomItem) => {
-              return (
-                <RoomItemComponent
-                  room={roomItem}
-                  key={roomItem.id.toString()}
-                />
-              );
-            })}
-          </div>
-        )}
+          </Tabs.Item>
+          <Tabs.Item title="Requests">your Requests</Tabs.Item>
+        </Tabs.Group>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { Button, Carousel } from "flowbite-react";
 import Lottie from "lottie-react";
 import workLottieAnimaiton from "../assets/man_using_phone.json";
 import manCodingLottieAnimation from "../assets/enjoy-beach-vacation.json";
+import lookingForanAdress from "../assets/location_pin.json";
 import util from "../util/util.json";
 import CarouselItemComponent from "../components/CarouselItemComponent";
 
@@ -102,7 +103,13 @@ const HomePage = () => {
             <p className="text-2xl">Our Mission</p>
             <p>{util.configuration.ourMission}</p>
           </div>
-          <div></div>
+          <div>
+            <Lottie
+              animationData={lookingForanAdress}
+              loop={true}
+              style={style_two}
+            />
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 sm:grid-cols-1 py-5 place-items-center">
