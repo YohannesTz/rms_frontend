@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useAuthStore } from "../store/authStore";
 import Lottie from "lottie-react";
 import notFoundAnimation from "../assets/empty_ghost.json";
@@ -18,6 +18,7 @@ import { BsFillCheckCircleFill, BsFillXOctagonFill } from "react-icons/bs";
 import axios from "axios";
 import { RoomItemComponent } from "../components/RoomItemComponent";
 import { SpinnerCircular } from "spinners-react";
+import { RequestItemComponent } from "../components/RequestItemComponent";
 
 const style = {
   height: 350,
@@ -56,22 +57,42 @@ const ClientViewPage = () => {
   const [result, setResult] = useState({});
   const [showResultDialog, setShowResultDialog] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
-  const [tabMode, setTabMode] = useState("listings");
+  const [request, setRequest] = useState([]);
+  const [isRequestLoading, setIsRequestLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+  const tabsRef = useRef(null);
 
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(baseUrl + `/api/rooms/lordId/${authData.id}`)
-      .then((response) => {
-        setRooms(response.data.data.rooms);
-        setIsLoading(false);
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
-      });
-  }, []);
+    console.log("triggered...", activeTab);
+    if (activeTab === 0) {
+      setIsLoading(true);
+      axios
+        .get(baseUrl + `/api/rooms/lordId/${authData.id}`)
+        .then((response) => {
+          setRooms(response.data.data.rooms);
+          setIsLoading(false);
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsLoading(false);
+        });
+    } else {
+      setIsRequestLoading(true);
+
+      axios
+        .get(baseUrl + `/api/reservations/lordId/${2}`)
+        .then((response) => {
+          setRequest(response.data.data.reservations);
+          setIsRequestLoading(false);
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsRequestLoading(false);
+        });
+    }
+  }, [activeTab]);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -97,7 +118,7 @@ const ClientViewPage = () => {
     setIsPosting(true);
 
     axios
-      .post(baseUrl + "/api/rooms/create", formValues)
+      .post(baseUrl + `/api/rooms/create/${authData.id}`, formValues)
       .then((response) => {
         console.log(response);
         setResult(response.data);
@@ -381,7 +402,10 @@ const ClientViewPage = () => {
 
       <div className="flex flex-row gap-3 flex-wrap my-6 justify-center">
         <div className="text-gray-700 text-left whitespace-break-normal justify-center ">
-          <p className="text-2xl">Hi {authData.firstName}, your listings </p>
+          <p className="text-2xl">
+            Hi {authData.firstName}, your{" "}
+            {activeTab == 0 ? "listings..." : "requests..."}{" "}
+          </p>
         </div>
         <div className="py-0">
           <Button size="xs" pill onClick={openDialog}>
@@ -390,8 +414,13 @@ const ClientViewPage = () => {
         </div>
       </div>
 
-       <div className="flex flex-row md:px-24">
-        <Tabs.Group aria-label="Pills" style="underline">
+      <div className="flex-1 flex-row md:px-10">
+        <Tabs.Group
+          aria-label="Pills"
+          style="underline"
+          ref={tabsRef}
+          onActiveTabChange={(tab) => setActiveTab(tab)}
+        >
           <Tabs.Item active={true} title="Listings">
             <div className="flex flex-row h-screen justify-center">
               {isLoading && (
@@ -424,7 +453,7 @@ const ClientViewPage = () => {
                   </div>
                 </div>
               ) : (
-                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-2 overflow-y-scroll ">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-2 overflow-y-scroll hide-scrollbar ">
                   {rooms.map((roomItem) => {
                     return (
                       <RoomItemComponent
@@ -437,7 +466,51 @@ const ClientViewPage = () => {
               )}
             </div>
           </Tabs.Item>
-          <Tabs.Item title="Requests">your Requests</Tabs.Item>
+          <Tabs.Item title="Requests">
+            <div className="flex flex-row h-screen justify-center">
+              {isRequestLoading && (
+                <div className="flex flex-row my-10 justify-center">
+                  <SpinnerCircular
+                    size={58}
+                    thickness={100}
+                    speed={100}
+                    color="rgba(58, 0, 162, 1)"
+                    secondaryColor="rgba(0, 0, 0, 0.44)"
+                  />
+                </div>
+              )}
+              {!isRequestLoading && request.length == 0 ? (
+                <div className="m-auto">
+                  <Lottie
+                    animationData={notFoundAnimation}
+                    style={style}
+                    loop={true}
+                  />
+                  <p className="text-xl text-gray-800 text-center">
+                    Oops! seems like you don't have any requests!
+                  </p>
+                  <div className="flex flex-row my-6 justify-center">
+                    <div className="py-0">
+                      <Button size="xs" pill href="/">
+                        Return Home
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-2 overflow-y-scroll hide-scrollbar ">
+                  {request.map((requestItem) => {
+                    return (
+                      <RequestItemComponent
+                        request={requestItem}
+                        key={requestItem.id.toString()}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </Tabs.Item>
         </Tabs.Group>
       </div>
     </div>

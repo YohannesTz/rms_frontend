@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/lord-view",
-        element: <LordView />,
+        element: <ClientViewPage />,
       },
       {
         path: "/client-view",

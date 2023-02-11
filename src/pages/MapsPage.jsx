@@ -52,7 +52,8 @@ const MapsPage = () => {
     roomId: 0,
     start_date: null,
     end_date: null,
-    price: 0, // I know, this is a bad Idea.
+    price: 0, // I know, this is a bad Idea. price of anything shouldn't be sent from the client
+    lordId: 0,
   };
 
   const [rooms, setRooms] = useState([]);
@@ -72,7 +73,7 @@ const MapsPage = () => {
   };
 
   const skip = 0,
-    take = 5;
+    take = 10;
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -94,10 +95,11 @@ const MapsPage = () => {
 
     setFormValues({
       ...formValues,
-      userId: selectedRoom.landLordId,
+      userId: authData.id,
       [e.target.id]: value,
       roomId: selectedRoom.id,
       price: selectedRoom.price,
+      lordId: selectedRoom.landLordId,
     });
 
     let startDate = new Date(formValues.start_date);
@@ -123,7 +125,6 @@ const MapsPage = () => {
     e.preventDefault();
     setIsPosting(true);
 
-
     axios
       .post(baseUrl + "/api/reservations/create", formValues)
       .then((response) => {
@@ -138,7 +139,7 @@ const MapsPage = () => {
 
   const onResultClose = () => {
     setShowResultDialog(false);
-  }
+  };
 
   return (
     <>

@@ -1,6 +1,6 @@
 {
-  "_baseUrl": "http://localhost:4000",
-  "baseUrl": "https://rms-backend.onrender.com",
+  "baseUrl": "http://localhost:4000",
+  "_baseUrl": "https://rms-backend.onrender.com",
   "configuration": {
     "logoUrl": "/images/home_icon.png",
     "companyName": "Search Homes",
