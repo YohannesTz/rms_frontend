@@ -208,10 +208,10 @@ const MapsPage = () => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="mb-2 block">
+             {/*  <div className="mb-2 block">
                 <Label value="Price" className="my-3" />
                 <p className="text-2xl">{calculatedPrice} ETB</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </Modal.Body>
