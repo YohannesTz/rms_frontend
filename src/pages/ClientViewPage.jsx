@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useAuthStore } from "../store/authStore";
 import Lottie from "lottie-react";
 import notFoundAnimation from "../assets/empty_ghost.json";
+import unAuthorizedAnimation from "../assets/unauthorized_error.json";
 import util from "../util/util.json";
 import {
   Button,
@@ -63,7 +64,6 @@ const ClientViewPage = () => {
   const tabsRef = useRef(null);
 
   useEffect(() => {
-    console.log("triggered...", activeTab);
     if (activeTab === 0) {
       setIsLoading(true);
       axios
@@ -144,6 +144,33 @@ const ClientViewPage = () => {
   const onResultClose = () => {
     setShowResultDialog(false);
   };
+
+  if (Object.keys(authData).length == 0 || authData.role != "lord") {
+    return (
+      <div className="flex h-screen">
+        <div className="m-auto">
+          <div className="flex flex-row justify-center">
+            <Lottie
+              animationData={unAuthorizedAnimation}
+              style={style}
+              loop={true}
+            />
+          </div>
+
+          <p className="text-2xl text-gray-800 text-center">
+            Oops! seems like your are not allowed to see this page
+          </p>
+          <div className="flex flex-row my-6 justify-center">
+            <div className="py-0">
+              <Button size="xs" pill href="/get-started">
+                Get Started
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

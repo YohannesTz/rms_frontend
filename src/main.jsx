@@ -12,8 +12,9 @@ import GetStarted from "./pages/GetStartedPage";
 import JoinClient from "./pages/JoinClient";
 import JoinLandLord from "./pages/JoinLandLord";
 import SignInPage from "./pages/SignInPage";
-import LordView from "./pages/LordView";
 import ClientViewPage from "./pages/ClientViewPage";
+import AdminPage from "./pages/AdminPage";
+import UsersPage from "./pages/UsersPage";
 
 const router = createBrowserRouter([
   {
@@ -57,8 +58,12 @@ const router = createBrowserRouter([
         element: <ClientViewPage />,
       },
       {
-        path: "/client-view",
-        element: <ClientViewPage />,
+        path: "/user-view",
+        element: <UsersPage />,
+      },
+      {
+        path: "/admin-view",
+        element: <AdminPage />,
       },
     ],
   },

@@ -69,6 +69,8 @@ const SignInPage = () => {
         navigate("/client-view");
       } else if (authData.role == "lord") {
         navigate("/lord-view");
+      } else if (authData.role == "admin") {
+        navigate("/admin-view");
       }
     }
   };
@@ -80,8 +82,11 @@ const SignInPage = () => {
     } else if (Object.keys(authData).length > 0 && authData.role === "lord") {
       console.log("redirecting lord...");
       navigate("/lord-view");
+    } else if (Object.keys(authData).length > 0 && authData.role === "admin") {
+      console.log("redirecting admin...");
+      navigate("/admin-view");
     }
-  });
+  }, []);
 
   return (
     <div>

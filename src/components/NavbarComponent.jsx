@@ -16,9 +16,11 @@ const NavbarComponent = () => {
 
   const handleSignIn = () => {
     if (authData.role == "client") {
-      navigate("/client-view");
+      navigate("/user-view");
     } else if (authData.role == "lord") {
       navigate("/lord-view");
+    } else if (authData.role == "admin") {
+      navigate("/admin-view");
     } else {
       navigate("/get-started");
     }
@@ -52,7 +54,9 @@ const NavbarComponent = () => {
               </Navbar.Link>
               <Navbar.Link
                 href={
-                  authData.role === "lord" ? "/lord-view" : "/client-view"
+                  (authData.role === "lord" && "/lord-view") ||
+                  (authData.role === "client" && "/user-view") ||
+                  (authData.role === "admin" && "/admin-view")
                 }
                 onClick={handleSignIn}
               >
