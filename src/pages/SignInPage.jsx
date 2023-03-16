@@ -177,7 +177,7 @@ const SignInPage = () => {
             <p className="text-gray-800">
               No account?{" "}
               <a
-                href="/join-talent"
+                href="/join-client"
                 className="font-medium text-blue-600 hover:underline"
               >
                 Sign Up
