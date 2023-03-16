@@ -16,7 +16,7 @@ const NavbarComponent = () => {
 
   const handleSignIn = () => {
     if (authData.role == "client") {
-      navigate("/user-view");
+      navigate("/client-view");
     } else if (authData.role == "lord") {
       navigate("/lord-view");
     } else if (authData.role == "admin") {

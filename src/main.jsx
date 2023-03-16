@@ -65,6 +65,10 @@ const router = createBrowserRouter([
         path: "/admin-view",
         element: <AdminPage />,
       },
+      {
+        path: "/client-view",
+        element: <ClientViewPage />
+      }
     ],
   },
   {
