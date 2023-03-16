@@ -51,10 +51,10 @@ const JoinLandLord = () => {
       )
     ) {
       console.log("check is successfull");
-      setIsSubmitDisabled(false);
+      setIsSubmitDisabled(true);
     } else {
       console.log("check is not successfull");
-      setIsSubmitDisabled(true);
+      setIsSubmitDisabled(false);
     }
 
     if (
@@ -160,7 +160,7 @@ const JoinLandLord = () => {
           <form className="flex flex-col gap-4">
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="email" value="Your organization email" />
+                <Label htmlFor="email" value="Your email" />
               </div>
               <TextInput
                 id="email"

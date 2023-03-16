@@ -208,7 +208,7 @@ const MapsPage = () => {
                   onChange={handleInputChange}
                 />
               </div>
-             {/*  <div className="mb-2 block">
+              {/*  <div className="mb-2 block">
                 <Label value="Price" className="my-3" />
                 <p className="text-2xl">{calculatedPrice} ETB</p>
               </div> */}
@@ -345,7 +345,7 @@ const MapsPage = () => {
               )}
 
               <Button
-                disabled={!selectedRoom.is_available}
+                disabled={!(!selectedRoom.is_available && authData.role == "client")}
                 className="my-3"
                 onClick={(e) => {
                   setShowBookDialog(true);
