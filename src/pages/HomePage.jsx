@@ -19,7 +19,7 @@ const style_two = {
 
 const HomePage = () => {
   return (
-    <div className="justify-center md:px-10 lg:px-18">
+    <div className="justify-center md:px-20 lg:px-18">
       <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-2 place-items-center">
         <div className="text-gray-800 text-left whitespace-break-normal ">
           <p className="text-4xl sm:text-3xl py-5">
@@ -146,6 +146,52 @@ const HomePage = () => {
           />
         </Carousel>
       </div> */}
+      <p className="text-4xl sm:text-3xl text-center text-gray-800 py-5">
+        Group Memebers
+      </p>
+      <div className="grid grid-cols-3 gap-3 place-items-center py-10">
+        <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-lg border-2">
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <p className="text-xl text-center text-gray-800 font-bold py-4">
+            Abrham Alemayehu
+          </p>
+        </div>
+
+        <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <p className="text-xl text-center text-gray-800 font-bold py-4">
+            Abdi Yoseph
+          </p>
+        </div>
+
+        <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <p className="text-xl text-center text-gray-800 font-bold py-4">
+            Oftanan Temirat
+          </p>
+        </div>
+
+        <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-female.png" alt="user image" />
+          <p className="text-xl text-center text-gray-800 font-bold py-4">
+            Mahlet Asnake
+          </p>
+        </div>
+
+        <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <p className="text-xl text-center text-gray-800 font-bold py-4">
+            Abdi Bedada
+          </p>
+        </div>
+
+        <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <p className="text-xl text-center text-gray-800 font-bold py-4">
+            Yohannes Tezera
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
