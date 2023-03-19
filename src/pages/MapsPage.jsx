@@ -47,6 +47,8 @@ const MapsPage = () => {
   let baseUrl = util.baseUrl;
   const authData = useAuthStore((state) => state.authData);
 
+  const role = authData.role;
+
   const initialValues = {
     userId: authData.id,
     roomId: 0,
@@ -345,7 +347,7 @@ const MapsPage = () => {
               )}
 
               <Button
-                disabled={!(!selectedRoom.is_available && authData.role == "client")}
+                disabled={!selectedRoom.is_available && role != "client"}
                 className="my-3"
                 onClick={(e) => {
                   setShowBookDialog(true);

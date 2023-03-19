@@ -81,7 +81,7 @@ const ClientViewPage = () => {
       setIsRequestLoading(true);
 
       axios
-        .get(baseUrl + `/api/reservations/lordId/${2}`)
+        .get(baseUrl + `/api/reservations/lordId/${authData.id}`)
         .then((response) => {
           setRequest(response.data.data.reservations);
           setIsRequestLoading(false);

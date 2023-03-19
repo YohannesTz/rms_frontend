@@ -151,44 +151,44 @@ const HomePage = () => {
       </p>
       <div className="grid grid-cols-3 gap-3 place-items-center py-10">
         <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-lg border-2">
-          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/ab_moti.jpg" alt="user image" />
           <p className="text-xl text-center text-gray-800 font-bold py-4">
-            Abrham Alemayehu
+            Abrham Alemayehu <br/> Id: Micro 15,642/21
           </p>
         </div>
 
         <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
-          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/abdi_yo.jpg" alt="user image" />
           <p className="text-xl text-center text-gray-800 font-bold py-4">
-            Abdi Yoseph
+            Abdi Yoseph <br/> Id: Micro 15,657/21
           </p>
         </div>
 
         <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
-          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/of.jpg" alt="user image" />
           <p className="text-xl text-center text-gray-800 font-bold py-4">
-            Oftanan Temirat
+            Oftanan Tamirat <br/> Id: Micro 15,609/21
           </p>
         </div>
 
         <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
-          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-female.png" alt="user image" />
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/mahlet_2.jpg" alt="user image" />
           <p className="text-xl text-center text-gray-800 font-bold py-4">
-            Mahlet Asnake
+            Mahlet Asnake <br/> Id: Micro 15,737/21
           </p>
         </div>
 
         <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
-          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/abdi_bd.jpg" alt="user image" />
           <p className="text-xl text-center text-gray-800 font-bold py-4">
-            Abdi Bedada
+            Abdi Bedada <br/> Id: Micro 15,376/21
           </p>
         </div>
 
         <div className="content-center shadow-lg hover:shadow-2xl py-10 px-20 rounded-md border-2">
-          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/user-icon.png" alt="user image" />
+          <img class="rounded-full border border-gray-100 self-center" width="150px" height="150px" src="./images/yohannes_tz.png" alt="user image" />
           <p className="text-xl text-center text-gray-800 font-bold py-4">
-            Yohannes Tezera
+            Yohannes Tezera <br/> Id: Micro 15,648/21
           </p>
         </div>
       </div>
