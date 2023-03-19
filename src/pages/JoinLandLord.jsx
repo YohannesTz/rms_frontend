@@ -70,14 +70,14 @@ const JoinLandLord = () => {
 
     if (
       formValues.phonenumber === "" ||
-      !/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
+      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
         formValues.phonenumber
       )
     ) {
-      setPhoneError("Please enter a valid phone number");
+      setPhoneError("");
       console.log("phone number not valid");
     } else {
-      setPhoneError("");
+      setPhoneError("Please enter a valid phone number");
       console.log("phone num valid");
     }
     setFormValues({

@@ -66,9 +66,9 @@ const SignInPage = () => {
       setAuthData(authData);
 
       if (authData.role == "client") {
-        navigate("/client-view");
+        navigate("/");
       } else if (authData.role == "lord") {
-        navigate("/lord-view");
+        navigate("/client-view");
       } else if (authData.role == "admin") {
         navigate("/admin-view");
       }

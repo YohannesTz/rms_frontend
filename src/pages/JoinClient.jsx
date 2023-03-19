@@ -53,7 +53,7 @@ const JoinClient = () => {
       setIsSubmitDisabled(false);
     } else {
       console.log("check is not successfull");
-      setIsSubmitDisabled(true);
+      setIsSubmitDisabled(false);
     }
 
     if (
